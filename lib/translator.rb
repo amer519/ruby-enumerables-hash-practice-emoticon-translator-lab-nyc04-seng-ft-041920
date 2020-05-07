@@ -1,32 +1,51 @@
-require 'yaml'
-require 'pry'
+require "yaml"
+emojis = YAML.load_file('./lib/emoticons.yml')
 
+def load_library(file_path)
+  emojis = YAML.load_file(file_path)
+  organized_emojis = {}
 
-def load_library(path_yaml)
-  emoticons = YAML.load_file('./lib/emoticons.yml')
+  emojis.each do |key, value|
+    
+    if !organized_emojis.include?(key)
+      organized_emojis[key] = {}
+    end
 
-  emoticon_lib = {'get_meaning'  => {},
-                  'get_emoticon' => {} }
-
-  emoticons.each do |meaning, value|  
-    english = value[0]
-    japanese = value[1]
-    emoticon_lib['get_meaning'][japanese] = meaning
-    emoticon_lib['get_emoticon'][english] = japanese
-  end
-  emoticon_lib
+    if !organized_emojis[key].include?(value[0])
+        organized_emojis[key] = {english: value[0], japanese: value[1]}
+    end
+  end 
+  return organized_emojis
 end
 
+def get_japanese_emoticon(file_path, emoticon)
+  emoji_Dictionary = load_library(file_path)
 
-def get_japanese_emoticon(path_yaml, emoticon)
-  emoticon_lib = load_library(path_yaml)
-  japanese_emoticon = emoticon_lib['get_emoticon'][emoticon]
-  japanese_emoticon ? japanese_emoticon : 'Sorry, that emoticon was not found'
-end	
+  emoji_Dictionary.each do |topLevel_Key, topLevel_Value|
+    # puts topLevel_Key
+    topLevel_Value.each do |midLevel_Key, midLevel_Value|
+      # puts midLevel_Key
+      # puts midLevel_Value
+      # if midLevel_Value.include?(emoticon)
+      if emoticon.include?(midLevel_Value)
+        # puts topLevel_Value[:english]
+        # return topLevel_Key, topLevel_Value[:japanese]
+        return topLevel_Value[:japanese]
+      end
+    end
+  end
+  return "Sorry, that emoticon was not found"
+end
 
+def get_english_meaning(file_path, emoticon)
+  emoji_Dictionary = load_library(file_path)
 
-def get_english_meaning(path_yaml, emoticon)
-  emoticon_lib = load_library(path_yaml)
-  english_meaning = emoticon_lib['get_meaning'][emoticon]
-  english_meaning ? english_meaning : 'Sorry, that emoticon was not found'
-end	
+  emoji_Dictionary.each do |topLevel_Key, topLevel_Value|
+    topLevel_Value.each do |midLevel_Key, midLevel_Value|
+      if emoticon.include?(midLevel_Value)
+        return topLevel_Key
+      end
+    end
+  end
+  return "Sorry, that emoticon was not found"
+end
