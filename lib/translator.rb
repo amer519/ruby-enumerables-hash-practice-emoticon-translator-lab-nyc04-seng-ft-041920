@@ -4,8 +4,14 @@ def load_library(path)
    
   emoticons = {
     happy: {
-      english: 
-    }
+      english: ":)",
+      japanese: "(^v^)"
+    },
+     {
+       
+     }
+      
+    
   }
     
   
