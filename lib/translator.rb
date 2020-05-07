@@ -12,8 +12,8 @@ def load_library(path)
       japanese: "ヽ(ｏ`皿′ｏ)"
     },
     bored: {
-      english: ""
-      japanese:
+      english: ":0"
+      japanese: ""
     }
       
     
