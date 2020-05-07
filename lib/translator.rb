@@ -16,9 +16,10 @@ def load_library(path)
       japanese: "(ΘεΘ;)"
     },
     confused: {
-      english: "%)"
-      japanese: ""
-    }
+      english: "%)",
+      japanese: "(゜.゜)"
+    },
+    
     
     
     
