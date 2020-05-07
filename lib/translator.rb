@@ -9,7 +9,8 @@ def load_library(path)
     },
      {
        angry: {
-         english:
+         english: ">:("
+         japanese: ""
        }
        
      }
