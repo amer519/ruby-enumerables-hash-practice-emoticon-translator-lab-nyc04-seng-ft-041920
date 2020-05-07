@@ -1,37 +1,20 @@
-require 'yaml'
+emoticons = YAML.load_file('./lib/emoticons.yml')
 
-def load_library(path)
-   
-  
-    
-    
-    
-    
-       YAML.load_file(path).each do |meaning, describe|
-     eng, jan = describe
-     emoticons["each_meaning"][jan] = meaning
-     emoticons["each_emoticon"][eng] = jan
+  emoticon_lib = {'get_meaning'  => {},
+                  'get_emoticon' => {} }
+
+  emoticons.each do |meaning, value|  # meaning= "surprised"   # value= [":o", "o_O"]  <-(e,j)
+    english = value[0]
+    japanese = value[1]
+    emoticon_lib['get_meaning'][japanese] = meaning
+    emoticon_lib['get_emoticon'][english] = japanese
   end
-  emoticons
+  emoticon_lib
 end
 
-def get_japanese_emoticon(path, emoticon)
-  emoticons = load_library(path) 
-  result = emoticons["each_emoticon"][emoticon]
-  if result
-    result
-  else
-    "Sorry, that emoticon was not found"
-  end
-end
 
-def get_english_meaning(path, emoticon)
-  emoticons = load_library(path)
-  result = emoticons["each_meaning"][emoticon] 
-  if result
-    result
-  else
-    "Sorry, that emoticon was not found"
-  end
-end
-
+def get_japanese_emoticon(emoticon_file, emoticon)
+  emoticon_lib = load_library(emoticon_file)
+  japanese_emoticon = emoticon_lib['get_emoticon'][emoticon]
+  japanese_emoticon ? japanese_emoticon : 'Sorry, that emoticon was not found'
+end	end
