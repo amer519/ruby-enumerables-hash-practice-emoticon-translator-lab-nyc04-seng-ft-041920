@@ -2,29 +2,13 @@ require 'yaml'
 
 def load_library(path)
    
-  emoticons = {
-    happy: {
-      english: ":)",
-      japanese: "(^v^)"
-    },
-    angry: {
-      english: ">:(",
-      japanese: "ヽ(ｏ`皿′ｏ)"
-    },
-    bored: {
-      english: ":0",
-      japanese: "(ΘεΘ;)"
-    },
-    confused: {
-      english: "%)",
-      japanese: "(゜.゜)"
-    },
+  
     
     
     
     
       
-    }
+    
       
     
   
