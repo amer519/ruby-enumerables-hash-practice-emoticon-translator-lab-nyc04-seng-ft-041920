@@ -2,19 +2,12 @@ require 'yaml'
 
 def load_library(path)
    
-  
+  emoticons = 
     
     
     
     
-      
-    
-      
-    
-  
-    
-  
-  YAML.load_file(path).each do |meaning, describe|
+       YAML.load_file(path).each do |meaning, describe|
      eng, jan = describe
      emoticons["each_meaning"][jan] = meaning
      emoticons["each_emoticon"][eng] = jan
