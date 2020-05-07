@@ -7,10 +7,10 @@ def load_library(path)
       english: ":)",
       japanese: "(^v^)"
     },
-     {
-       angry: {
-         english: ">:("
-         japanese: ""
+    angry: {
+      english: ">:("
+      japanese: "ヽ(ｏ`皿′ｏ)"
+      
        }
        
      }
