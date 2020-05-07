@@ -8,12 +8,10 @@ def load_library(path)
       japanese: "(^v^)"
     },
     angry: {
-      english: ">:("
+      english: ">:(",
       japanese: "ヽ(ｏ`皿′ｏ)"
-      
-       }
-       
-     }
+    },
+    
       
     
   }
