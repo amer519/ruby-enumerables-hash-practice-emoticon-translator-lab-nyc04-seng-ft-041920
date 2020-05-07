@@ -12,12 +12,16 @@ def load_library(path)
       japanese: "ヽ(ｏ`皿′ｏ)"
     },
     bored: {
-      english: ":0"
-      japanese: ""
+      english: ":0",
+      japanese: "(ΘεΘ;)"
+    },
+    {
+    
+      
     }
       
     
-  }
+  
     
   
   YAML.load_file(path).each do |meaning, describe|
